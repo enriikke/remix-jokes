@@ -1,8 +1,8 @@
 import type { LinksFunction } from "@remix-run/node";
-import stylesheet from "~/styles/index.css";
+import styles from "~/styles/index.css";
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: stylesheet }];
+  return [{ rel: "stylesheet", href: styles }];
 };
 
 export default function IndexRoute() {

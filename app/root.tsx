@@ -1,6 +1,8 @@
 import type { MetaFunction, LinksFunction } from "@remix-run/node";
 import { LiveReload, Outlet, Links } from "@remix-run/react";
-import stylesheet from "~/styles/tailwind.css";
+import globalStyles from "~/styles/global.css";
+import globalMediumStyles from "~/styles/global-medium.css";
+import globalLargeStyles from "~/styles/global-large.css";
 
 // export const meta: MetaFunction = () => ({
 //   charset: "utf-8",
@@ -9,7 +11,9 @@ import stylesheet from "~/styles/tailwind.css";
 // });
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
+  { rel: "stylesheet", href: globalStyles },
+  { rel: "stylesheet", href: globalMediumStyles, media: "print, (min-width: 640px)" },
+  { rel: "stylesheet", href: globalLargeStyles, media: "screen and (min-width: 1024px)" },
 ];
 
 export default function App() {
