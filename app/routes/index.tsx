@@ -6,7 +6,5 @@ export const links: LinksFunction = () => {
 };
 
 export default function IndexRoute() {
-  return (
-    <div>Hello world! From Index!</div>
-  );
+  return <div>Hello world! From Index!</div>;
 }

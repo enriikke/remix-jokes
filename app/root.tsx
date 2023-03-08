@@ -12,8 +12,16 @@ import globalLargeStyles from "~/styles/global-large.css";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: globalStyles },
-  { rel: "stylesheet", href: globalMediumStyles, media: "print, (min-width: 640px)" },
-  { rel: "stylesheet", href: globalLargeStyles, media: "screen and (min-width: 1024px)" },
+  {
+    rel: "stylesheet",
+    href: globalMediumStyles,
+    media: "print, (min-width: 640px)",
+  },
+  {
+    rel: "stylesheet",
+    href: globalLargeStyles,
+    media: "screen and (min-width: 1024px)",
+  },
 ];
 
 export default function App() {
