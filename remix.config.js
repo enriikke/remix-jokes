@@ -2,6 +2,7 @@
 module.exports = {
   ignoredRouteFiles: ["**/.*"],
   future: {
+    unstable_postcss: true,
     unstable_tailwind: true,
   },
   // appDirectory: "app",
