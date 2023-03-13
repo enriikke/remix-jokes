@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData, useCatch } from "@remix-run/react";
 import { json } from "@remix-run/node";
 import { db } from "~/utils/db.server";
 
@@ -10,6 +10,12 @@ export const loader = async () => {
     skip: randomNum,
     select: { content: true, name: true },
   });
+
+  if (!joke) {
+    throw new Response("No random joke found", {
+      status: 404,
+    });
+  }
 
   return json({ joke });
 };
@@ -24,6 +30,20 @@ export default function JokesIndexRoute() {
       <Link to=".">"{joke.name}" Permalink</Link>
     </div>
   );
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  if (caught.status === 404) {
+    return (
+      <div className="error-container">
+        There are no jokes to display.
+      </div>
+    );
+  }
+
+  throw new Error(`Unhandled error: ${caught.status}`);
 }
 
 export function ErrorBoundary() {
