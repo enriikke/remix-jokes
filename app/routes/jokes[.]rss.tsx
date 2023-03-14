@@ -23,14 +23,11 @@ export const loader = async ({ request }: LoaderArgs) => {
   });
 
   const host =
-    request.headers.get("X-Forwarded-Host") ??
-    request.headers.get("host");
+    request.headers.get("X-Forwarded-Host") ?? request.headers.get("host");
   if (!host) {
     throw new Error("Could not determine domain URL.");
   }
-  const protocol = host.includes("localhost")
-    ? "http"
-    : "https";
+  const protocol = host.includes("localhost") ? "http" : "https";
   const domain = `${protocol}://${host}`;
   const jokesUrl = `${domain}/jokes`;
 
@@ -47,9 +44,7 @@ export const loader = async ({ request }: LoaderArgs) => {
           .map((joke) =>
             `
             <item>
-              <title><![CDATA[${escapeCdata(
-                joke.name
-              )}]]></title>
+              <title><![CDATA[${escapeCdata(joke.name)}]]></title>
               <description><![CDATA[A funny joke called ${escapeHtml(
                 joke.name
               )}]]></description>
@@ -69,13 +64,9 @@ export const loader = async ({ request }: LoaderArgs) => {
 
   return new Response(rssString, {
     headers: {
-      "Cache-Control": `public, max-age=${
-        60 * 10
-      }, s-maxage=${60 * 60 * 24}`,
+      "Cache-Control": `public, max-age=${60 * 10}, s-maxage=${60 * 60 * 24}`,
       "Content-Type": "application/xml",
-      "Content-Length": String(
-        Buffer.byteLength(rssString)
-      ),
+      "Content-Length": String(Buffer.byteLength(rssString)),
     },
   });
 };
