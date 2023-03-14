@@ -37,9 +37,7 @@ export function CatchBoundary() {
 
   if (caught.status === 404) {
     return (
-      <div className="error-container">
-        There are no jokes to display.
-      </div>
+      <div className="error-container">There are no jokes to display.</div>
     );
   }
 
@@ -47,9 +45,5 @@ export function CatchBoundary() {
 }
 
 export function ErrorBoundary() {
-  return (
-    <div className="error-container">
-      I did a whoopsies.
-    </div>
-  );
+  return <div className="error-container">I did a whoopsies.</div>;
 }

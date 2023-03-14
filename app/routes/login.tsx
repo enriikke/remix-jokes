@@ -89,7 +89,7 @@ export const action = async ({ request }: ActionArgs) => {
         });
       }
 
-      const user = await register( { username, password })
+      const user = await register({ username, password });
       if (!user) {
         return badRequest({
           fieldErrors: null,

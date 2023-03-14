@@ -65,7 +65,7 @@ export function CatchBoundary() {
         </h1>
       </div>
     </Document>
-  )
+  );
 }
 
 export function ErrorBoundary({ error }: { error: Error }) {
